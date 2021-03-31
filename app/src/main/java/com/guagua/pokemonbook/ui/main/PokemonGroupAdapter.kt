@@ -23,10 +23,6 @@ class PokemonGroupAdapter: RecyclerView.Adapter<PokemonGroupViewHolder>() {
     private val groupAdapters = mutableMapOf<String, PokemonAdapter>()
     private val saveInstanceStates = mutableMapOf<Long, Parcelable?>()
 
-    init {
-        setHasStableIds(true)
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonGroupViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return PokemonGroupViewHolder(

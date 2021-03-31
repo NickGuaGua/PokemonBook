@@ -38,24 +38,24 @@ class MainFragment : Fragment() {
         }
     }
 
-    private val epoxyMainController: MainController by lazy {
-        MainController(object : MainController.Callback {
-            override fun onSeeMoreClick(groupId: String) {
-                toast("on see more click: group id -> $groupId")
-            }
-
-            override fun onItemClick(item: PokemonData) {
-                toast("on pokemon click: ${item.id} -> ${item.name}")
-            }
-        })
-    }
+//    private val epoxyMainController: MainController by lazy {
+//        MainController(object : MainController.Callback {
+//            override fun onSeeMoreClick(groupId: String) {
+//                toast("on see more click: group id -> $groupId")
+//            }
+//
+//            override fun onItemClick(item: PokemonData) {
+//                toast("on pokemon click: ${item.id} -> ${item.name}")
+//            }
+//        })
+//    }
 
     private val stateObserver: Observer<MainViewModel.State> = Observer {
         when(it) {
             is MainViewModel.State.Loading -> {}
             is MainViewModel.State.Success -> {
                 setupAdapterWithNative(it.pokemonGroups)
-                setupAdapterWithEpoxy(it.pokemonGroups)
+//                setupAdapterWithEpoxy(it.pokemonGroups)
             }
             else -> {}
         }
@@ -95,10 +95,10 @@ class MainFragment : Fragment() {
         })
     }
 
-    private fun setupAdapterWithEpoxy(groups: List<ItemGroup<PokemonData>>) {
-        setAdapter(epoxyMainController.adapter)
-        epoxyMainController.setData(groups)
-    }
+//    private fun setupAdapterWithEpoxy(groups: List<ItemGroup<PokemonData>>) {
+//        setAdapter(epoxyMainController.adapter)
+//        epoxyMainController.setData(groups)
+//    }
 
     private fun toast(text: String) {
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
